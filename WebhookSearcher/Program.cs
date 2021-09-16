@@ -1,22 +1,25 @@
-﻿using dnlib.DotNet;
+using dnlib.DotNet;
 using System;
+using System.Net;
 
 namespace WebhookSearcher
 {
     class Program
     {
+        static string ist { get; set; }
         static void Main(string[] args)
         {
             try
             {
                 string x = args[0];
                 Console.Title = "Webhook searcher | https://github.com/AizonF";
+
                 Search_File(x);
             }
-            catch
+            catch (Exception ex)
             {
                 Red_Console();
-                Console.WriteLine("[+] Drag and drop please!");
+                Console.WriteLine(ex.ToString());
                 Console.ReadLine();
             }
 
@@ -33,31 +36,42 @@ namespace WebhookSearcher
 
         static void Search_File(string pts)
         {
-            ModuleDefMD mod = ModuleDefMD.Load(pts);
-            foreach (var type in mod.Types)
+            try
             {
-                foreach (var method in type.Methods)
+                ModuleDefMD mod = ModuleDefMD.Load(pts);
+                foreach (var type in mod.Types)
                 {
-                    foreach(var instructions in method.Body.Instructions)
+                    foreach (var method in type.Methods)
                     {
-                        string op = instructions.OpCode.ToString();
-                        if (op.Contains("ldstr"))
+                        foreach (var instructions in method.Body.Instructions)
                         {
-                            string op2 = instructions.Operand.ToString();
-                            if (op2.Contains("https://discord.com/api/webhooks/"))
+                            string op = instructions.OpCode.ToString();
+                            if (op.Contains("ldstr"))
                             {
-                                SMOG();
+                                string op2 = instructions.Operand.ToString();
+                                if (op2.Contains("https://discord.com/api/webhooks/") && op2.Length <= 120)
+                                {
+                                    SMOG();
 
-                                string Fi = method.Name;
 
-                                Console.WriteLine("\nWebhook Found in {0}\n\n" + op2, Fi);
-                                Console.ReadLine();
+                                    string Fi = method.FullName;
+
+                                    Console.WriteLine("\nWebhook Found in {0}\n\n" + op2, Fi);
+                                    Console.ReadLine();
+                                }
                             }
                         }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.ReadLine();
+            }
         }
+
+
         static void SMOG()
         {
             Green_Console();
