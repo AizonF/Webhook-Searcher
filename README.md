@@ -3,7 +3,7 @@ A program that searches .NET executables for a discord webhook, prints back the 
 
 My discord is iceyy#3206 if you need help
 
-
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=AizonF&repo=Webhook-Searcher)](https://github.com/anuraghazra/github-readme-stats)
 
 
 Usage
