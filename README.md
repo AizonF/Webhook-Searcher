@@ -3,7 +3,7 @@ A program that searches .NET executables for a discord webhook, prints back the 
 
 My discord is iceyy#3206 if you need help
 
-
+And If your going to use my code, please credit my github, all I ask for.
 
 
 Usage
