@@ -5,6 +5,7 @@ My discord is iceyy#3206 if you need help
 
 And If your going to use my code, please credit my github, all I ask for.
 
+I don't upadte this repo a lot, so don't expect constant updates.
 
 Usage
 
