@@ -1,7 +1,6 @@
 # Webhook-Searcher
 A program that searches .NET executables for a discord webhook, prints back the webhook, and the method which it was found in.
 
-My discord is Aizon#3206 if you need help
 
 And If your going to use my code, please credit my github, all I ask for.
 
